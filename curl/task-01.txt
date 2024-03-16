@@ -1,0 +1,537 @@
+maponce@maponce:~/Downloads/api$ curl -i \
+-H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDk1NzY5MTUsImV4cCI6MTcwOTU3NzIxNSwiaXNzIjoiNjljODc4ZmMtZGEyOS0xMWVlLWIxYzctZWIxYTdmY2I0YmQyIn0.1g6aN-LRE3kSFWR3tTNkTOYczsCq_hF0lIwBzEqvJX2wQtsYlKrSKHyNC_5Oj52PuJXZxjT6nv6tHHGlSnsbQmy9PinGXd_ZqIeUCBK3yCoUnaexkrJ53X-o0rkOzKtIYirNQZmdc4aatEm0MPjR0_XYQFnFxfdYBncBGBM_KQf-vWwRMdzsVscmV62z7svDy1kJetfQEsBFO1B2oSZ9Gr_FLcVWnHd2__5wwcMf6h8HNP1bxORgvebpTTtYvgmyERHgbFlPRYXsuddke-HDDZ_2rtv61b6hgzR_ulnXRO8CPdf6QTex-TYxBd4zAmOYFxFJMThbJu2axs2FP6fJmQ" \
+-H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" \                      
+-H "Accept: application/json" \
+-X POST \
+https://zube.io/api/users/tokens
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:32:30 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 259
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"103-ah1ewrjW4NKEW6X1PlXWoGAZGFA"
+Expires: Mon, 04 Mar 2024 18:32:30 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI2OWM4NzhmYy1kYTI5LTExZWUtYjFjNy1lYjFhN2ZjYjRiZDIiLCJ1c2VyX2lkIjo1NTA0NCwiYXVkIjoienViZV9hcGkiLCJpYXQiOjE3MDk1NzcxNTAsImV4cCI6MTcwOTY2MzU1MH0.ZfpAg2XuEAfxJlzZB8M01-jXevZIUTfvUf7bCC80EVU"}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ export token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI2OWM4NzhmYy1kYTI5LTExZWUtYjFjNy1lYjFhN2ZjYjRiZDIiLCJ1c2VyX2lkIjo1NTA0NCwiYXVkIjoienViZV9hcGkiLCJpYXQiOjE3MDk1NzcxNTAsImV4cCI6MTcwOTY2MzU1MH0.ZfpAg2XuEAfxJlzZB8M01-jXevZIUTfvUf7bCC80EVU
+maponce@maponce:~/Downloads/api$ echo $token
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI2OWM4NzhmYy1kYTI5LTExZWUtYjFjNy1lYjFhN2ZjYjRiZDIiLCJ1c2VyX2lkIjo1NTA0NCwiYXVkIjoienViZV9hcGkiLCJpYXQiOjE3MDk1NzcxNTAsImV4cCI6MTcwOTY2MzU1MH0.ZfpAg2XuEAfxJlzZB8M01-jXevZIUTfvUf7bCC80EVU
+maponce@maponce:~/Downloads/api$ curl -i \
+-H "Authorization: Bearer $token" \
+-H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" \
+-H "Accept: application/json" \
+https://zube.io/api/projects
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:38:10 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1006
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"3ee-MZ+AOXex10a+SJiKFCPLLsq/yf8"
+Expires: Mon, 04 Mar 2024 18:38:10 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":1,"total":1},"data":[{"id":31441,"account_id":27402,"description":null,"name":"Api test","created_at":"2024-03-04T13:13:05.695Z","updated_at":"2024-03-04T13:13:05.695Z","slug":"api-test","private":true,"priority_format":"number","priority":true,"points":true,"triage":false,"upvotes":false,"auto_add_github_users":true,"color":"#2196F3","should_use_fibonacci_scale":true,"default_epic_list_id":71900,"is_archived":false,"sources":[],"workspaces":[{"id":36487,"project_id":31441,"description":null,"name":"Workspace 1","slug":"workspace-1","private":true,"priority_format":"number","priority":true,"points":true,"upvotes":false,"created_at":"2024-03-04T13:13:05.769Z","updated_at":"2024-03-04T13:13:05.769Z","archive_merged_prs":false,"use_category_labels":false,"auto_archive_closed_cards":true,"add_category_labels_to_imported_cards":false,"should_use_fibonacci_scale":true,"timezone":"UTC","should_display_prs":true,"default_card_template_id":null}]}]}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects -0 output json
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:38:40 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1006
+Connection: close
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"3ee-MZ+AOXex10a+SJiKFCPLLsq/yf8"
+Expires: Mon, 04 Mar 2024 18:38:40 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":1,"total":1},"data":[{"id":31441,"account_id":27402,"description":null,"name":"Api test","created_at":"2024-03-04T13:13:05.695Z","updated_at":"2024-03-04T13:13:05.695Z","slug":"api-test","private":true,"priority_format":"number","priority":true,"points":true,"triage":false,"upvotes":false,"auto_add_github_users":true,"color":"#2196F3","should_use_fibonacci_scale":true,"default_epic_list_id":71900,"is_archived":false,"sources":[],"workspaces":[{"id":36487,"project_id":31441,"description":null,"name":"Workspace 1","slug":"workspace-1","private":true,"priority_format":"number","priority":true,"points":true,"upvotes":false,"created_at":"2024-03-04T13:13:05.769Z","updated_at":"2024-03-04T13:13:05.769Z","archive_merged_prs":false,"use_category_labels":false,"auto_archive_closed_cards":true,"add_category_labels_to_imported_cards":false,"should_use_fibonacci_scale":true,"timezone":"UTC","should_display_prs":true,"default_card_template_id":null}]}]}curl: (6) Could not resolve host: output
+curl: (6) Could not resolve host: json
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects  -o output.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1006  100  1006    0     0    521      0  0:00:01  0:00:01 --:--:--   521
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects -o output.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1006  100  1006    0     0    649      0  0:00:01  0:00:01 --:--:--   649
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:44:28 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1006
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"3ee-MZ+AOXex10a+SJiKFCPLLsq/yf8"
+Expires: Mon, 04 Mar 2024 18:44:28 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":1,"total":1},"data":[{"id":31441,"account_id":27402,"description":null,"name":"Api test","created_at":"2024-03-04T13:13:05.695Z","updated_at":"2024-03-04T13:13:05.695Z","slug":"api-test","private":true,"priority_format":"number","priority":true,"points":true,"triage":false,"upvotes":false,"auto_add_github_users":true,"color":"#2196F3","should_use_fibonacci_scale":true,"default_epic_list_id":71900,"is_archived":false,"sources":[],"workspaces":[{"id":36487,"project_id":31441,"description":null,"name":"Workspace 1","slug":"workspace-1","private":true,"priority_format":"number","priority":true,"points":true,"upvotes":false,"created_at":"2024-03-04T13:13:05.769Z","updated_at":"2024-03-04T13:13:05.769Z","archive_merged_prs":false,"use_category_labels":false,"auto_archive_closed_cards":true,"add_category_labels_to_imported_cards":false,"should_use_fibonacci_scale":true,"timezone":"UTC","should_display_prs":true,"default_card_template_id":null}]}]}maponce@maponcmaponce@maponce:~/Downloads/api$ curl -i \
+-H "Authorization: Bearer $token" \
+-H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" \
+-H "Content-Type: application/json" \
+-d '{"project_id":31441,"title":"Hello World"}' \
+-X POST \
+https://zube.io/api/cards
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:47:03 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 728
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2d8-wbAxN5CaaKlLJXf6C93Uw8rtdXw"
+Expires: Mon, 04 Mar 2024 18:47:03 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"project_id":31441,"title":"Hello World","state":"open","sprint_id":null,"category_name":"Inbox","status":"new","creator_id":368248,"closed_at":null,"closer_id":null,"workspace_id":36487,"upvotes_count":0,"number":1,"body":null,"comments_count":0,"last_comment_at":null,"points":null,"priority":null,"search_key":"1 hello world","created_at":"2024-03-04T18:47:03.742Z","updated_at":"2024-03-04T18:47:03.742Z","epic_id":null,"was_archived_from_404":null,"id":8517307,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects/8517307
+HTTP/1.1 403 Forbidden
+Server: nginx
+Date: Mon, 04 Mar 2024 18:47:50 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 21
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"15-TLNzmZqKxaTuFdX/dVWWPBu44/c"
+
+{"error":"Forbidden"}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects/8517307
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/accounts
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:48:46 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 434
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"1b2-2gqEgdvKjMkoP4m69pcbS+FRSNk"
+Expires: Mon, 04 Mar 2024 18:48:46 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":1,"total":1},"data":[{"id":27402,"display_name":"MP APi course","status":"active","created_at":"2024-03-04T13:12:54.278Z","updated_at":"2024-03-04T13:12:54.278Z","private_users_count":1,"first_billable_at":null,"slug":"mp-api-course","has_github_billing":false,"discount":0,"has_annual_billing":false,"seats":null,"annual_amount":null,"githubOwner":null,"githubInstallation":null}]}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/aAccept: application/json" https://curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:49:26 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 1006
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"3ee-MZ+AOXex10a+SJiKFCPLLsq/yf8"
+Expires: Mon, 04 Mar 2024 18:49:26 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":1,"total":1},"data":[{"id":31441,"account_id":27402,"description":null,"name":"Api test","created_at":"2024-03-04T13:13:05.695Z","updated_at":"2024-03-04T13:13:05.695Z","slug":"api-test","private":true,"priority_format":"number","priority":true,"points":true,"triage":false,"upvotes":false,"auto_add_github_users":true,"color":"#2196F3","should_use_fibonacci_scale":true,"default_epic_list_id":71900,"is_archived":false,"sources":[],"workspaces":[{"id":36487,"project_id":31441,"description":null,"name":"Workspace 1","slug":"workspace-1","private":true,"priority_format":"number","priority":true,"points":true,"upvotes":false,"created_at":"2024-03-04T13:13:05.769Z","updated_at":"2024-03-04T13:13:05.769Z","archive_merged_prs":false,"use_category_labels":false,"auto_archive_closed_cards":true,"add_category_labels_to_imported_cards":false,"should_use_fibonacci_scale":true,"timezone":"UTC","should_display_prs":true,"default_card_template_id":null}]}]}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i \
+-H "Authorization: Bearer $token" \
+-H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" \
+-H "Content-Type: application/json" \
+-d '{"account_id":27402,"description":"MP test project","name":"mp-project"}' \
+-X POST \
+https://zube.io/api/projects
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Mon, 04 Mar 2024 18:55:35 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 47
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"2f-RIe86lLxi3IUr9SizofuVDycG6s"
+
+{"error":"Bad Request","message":"Bad Request"}
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-ClientContent-Type: application/json" -d '{"project_id":31441,"title":"Hello World"}' -X POST https://zube.io/api/cards
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 18:59:15 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 728
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2d8-uwXNO4tA75NtVSGHu/lF8ycj3YE"
+Expires: Mon, 04 Mar 2024 18:59:15 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"project_id":31441,"title":"Hello World","state":"open","sprint_id":null,"category_name":"Inbox","status":"new","creator_id":368248,"closed_at":null,"closer_id":null,"workspace_id":36487,"upvotes_count":0,"number":2,"body":null,"comments_count":0,"last_comment_at":null,"points":null,"priority":null,"search_key":"2 hello world","created_at":"2024-03-04T18:59:15.677Z","updated_at":"2024-03-04T18:59:15.677Z","epic_id":null,"was_archived_from_404":null,"id":8517316,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects/31441
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:00:21 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 931
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"3a3-uCCqixYc1zaxpN/d/4O+LXbg6OE"
+Expires: Mon, 04 Mar 2024 19:00:21 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":31441,"account_id":27402,"description":null,"name":"Api test","created_at":"2024-03-04T13:13:05.695Z","updated_at":"2024-03-04T13:13:05.695Z","slug":"api-test","private":true,"priority_format":"number","priority":true,"points":true,"triage":false,"upvotes":false,"auto_add_github_users":true,"color":"#2196F3","should_use_fibonacci_scale":true,"default_epic_list_id":71900,"is_archived":false,"sources":[],"workspaces":[{"id":36487,"project_id":31441,"description":null,"name":"Workspace 1","slug":"workspace-1","private":true,"priority_format":"number","priority":true,"points":true,"upvotes":false,"created_at":"2024-03-04T13:13:05.769Z","updated_at":"2024-03-04T13:13:05.769Z","archive_merged_prs":false,"use_category_labels":false,"auto_archive_closed_cards":true,"add_category_labels_to_imported_cards":false,"should_use_fibonacci_scale":true,"timezone":"UTC","should_display_prs":true,"default_card_template_id":null}]}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/cards/8517316
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:04:06 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 728
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2d8-7P/1ALLyUBtSQAsMcrKlLF9cigk"
+Expires: Mon, 04 Mar 2024 19:04:06 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":8517316,"creator_id":368248,"project_id":31441,"sprint_id":null,"workspace_id":36487,"body":null,"category_name":"Inbox","closed_at":null,"comments_count":0,"last_comment_at":null,"number":2,"points":null,"priority":null,"search_key":"2 hello world","state":"open","status":"new","title":"Hello World","upvotes_count":0,"created_at":"2024-03-04T18:59:15.677Z","updated_at":"2024-03-04T18:59:15.677Z","epic_id":null,"closer_id":null,"was_archived_from_404":null,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/sources 
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:10:25 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 75
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"4b-1lMW5T+LLe561IrSXrjcxHrACy4"
+Expires: Mon, 04 Mar 2024 19:10:25 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":0,"total":0},"data":[]}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/cards/8517316
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:18:26 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 728
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2d8-7P/1ALLyUBtSQAsMcrKlLF9cigk"
+Expires: Mon, 04 Mar 2024 19:18:26 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":8517316,"creator_id":368248,"project_id":31441,"sprint_id":null,"workspace_id":36487,"body":null,"category_name":"Inbox","closed_at":null,"comments_count":0,"last_comment_at":null,"number":2,"points":null,"priority":null,"search_key":"2 hello world","state":"open","status":"new","title":"Hello World","upvotes_count":0,"created_at":"2024-03-04T18:59:15.677Z","updated_at":"2024-03-04T18:59:15.677Z","epic_id":null,"closer_id":null,"was_archived_from_404":null,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Content-Type: application/json" -d '{"project_id":31441,"title":"Hello World second test"}' -X POST https://zube.io/api/cards
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:20:22 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 752
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2f0-psN/RB4FJKQQ4LLW55cU1diPsFQ"
+Expires: Mon, 04 Mar 2024 19:20:22 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"project_id":31441,"title":"Hello World second test","state":"open","sprint_id":null,"category_name":"Inbox","status":"new","creator_id":368248,"closed_at":null,"closer_id":null,"workspace_id":36487,"upvotes_count":0,"number":3,"body":null,"comments_count":0,"last_comment_at":null,"points":null,"priority":null,"search_key":"3 hello world second test","created_at":"2024-03-04T19:20:22.813Z","updated_at":"2024-03-04T19:20:22.813Z","epic_id":null,"was_archived_from_404":null,"id":8517338,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/cards/8517338
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:21:03 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 752
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2f0-Qqxw+yQWv0HlSDseyrxhb1ZkZ84"
+Expires: Mon, 04 Mar 2024 19:21:03 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":8517338,"creator_id":368248,"project_id":31441,"sprint_id":null,"workspace_id":36487,"body":null,"category_name":"Inbox","closed_at":null,"comments_count":0,"last_comment_at":null,"number":3,"points":null,"priority":null,"search_key":"3 hello world second test","state":"open","status":"new","title":"Hello World second test","upvotes_count":0,"created_at":"2024-03-04T19:20:22.813Z","updated_at":"2024-03-04T19:20:22.813Z","epic_id":null,"closer_id":null,"was_archived_from_404":null,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Content-Type: application/json" -d '{"destination":{"position":2,"type":"project"}}' - -X PUT https://zube.io/api/8517338/move
+curl: option -: is unknown
+curl: try 'curl --help' or 'curl --manual' for more information
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Content-Type: application/json" -d '{"destination":{"position":2,"type":"project"}}' - -X PUT https://zube.io/api/8517338/move
+curl: option -: is unknown
+curl: try 'curl --help' or 'curl --manual' for more information
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Content-Type: application/json" -d '{"data_type":"test", "name":"testing"}' -X POST https://zube.io/api/projects/31441/custom_fields
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Mon, 04 Mar 2024 19:42:37 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 23
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"17-i22p4FL6eG9sZYzIFCm/xvy/pHM"
+
+maponce@maponce:~/Downloads/api$ ponce:~/Downloads/api$ curl -i -H $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/projects/31441/custom_fields
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:43:31 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 75
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"4b-1lMW5T+LLe561IrSXrjcxHrACy4"
+Expires: Mon, 04 Mar 2024 19:43:31 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7f" -H "Accept: application/json"  https://zube.io/api/cards/8517338
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:46:06 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+{"error":"Unauthorized","message":"Invalid JWT."}
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2ept: application/json" https://zube.io/api/cards/8517338
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:46:44 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7f" -H "Accept: application/json"  https://zube.io/api/cards/8517338
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:47:17 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+{"error":"Unauthorized","message":"Invalid JWT."}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDk1ODE1ODEsImV4cCI6MTcwOTU4MTg4MSwiaXNzIjoiNjljODc4ZmMtZGEyOS0xMWVlLWIxYzctZWIxYTdmY2I0YmQyIn0.sCfqgs00HqzliwgQOirsZ7oTeEjaDoi3D1lnqK9HxqyPyBC6uvGBy5DsBkUAJgyB184i3z7LC2pCXPSJroVW1Ep6RosEOZdltHHJC_oTo09E6A-3a_xIZrV9GabWXOi0tRmoXtKvPr9-2n7tbq-sOWHQDKWE58LvHE_KUrnLQfOKfmPbg_sJ19V85fkTyYb0QzlMF1icYA1Xg8s3XkVvC1vOmTDuysUxygKMPYeUucXV9bz-ypWv1R62bm7JUmeSEEE_CapKkImVCSIhZrb7MV0kIU-wpuNgu88peCd9lmobzFSWL_Wwha_CRa1kL_CW6H1vv8bnPsTTfN1C9X99uw" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" -X POST https://zube.io/api/users/tokens
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:48:36 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 259
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"103-JyJt8eSISdaAukw/3dgIWVBxSog"
+Expires: Mon, 04 Mar 2024 19:48:36 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI2OWM4NzhmYy1kYTI5LTExZWUtYjFjNy1lYjFhN2ZjYjRiZDIiLCJ1c2VyX2lkIjo1NTA0NCwiYXVkIjoienViZV9hcGkiLCJpYXQiOjE3MDk1ODE3MTYsImV4cCI6MTcwOTY2ODExNn0.z5ooN4UnrBOPioHEp1g1ZSmniPWZUKxCsuxRW8OykEc"}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7f" -H "Accept: application/jmaponce@maponce:~/Downloads/api$ export token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI2OWM4NzhmYy1kYTI5LTExZWUtYjFjNy1lYjFhN2ZjYjRiZDIiLCJ1c2VyX2lkIjo1NTA0NCwiYXVkIjoienViZV9hcGkiLCJpYXQiOjE3MDk1ODE3MTYsImV4cCI6MTcwOTY2ODExNn0.z5ooN4UnrBOPioHEp1g1ZSmniPWZUKxCsuxRW8OykEc
+maponce@maponce:~/Downloads/api$ echo $token
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI2OWM4NzhmYy1kYTI5LTExZWUtYjFjNy1lYjFhN2ZjYjRiZDIiLCJ1c2VyX2lkIjo1NTA0NCwiYXVkIjoienViZV9hcGkiLCJpYXQiOjE3MDk1ODE3MTYsImV4cCI6MTcwOTY2ODExNn0.z5ooN4UnrBOPioHEp1g1ZSmniPWZUKxCsuxRW8OykEc
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7f" -H "Accept: application/json"  https://zube.io/api/cards/8517338
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:49:13 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+{"error":"Unauthorized","message":"Invalid JWT."}
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json"  https://zube.io/api/cards/8517338
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:49:54 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 752
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"2f0-Qqxw+yQWv0HlSDseyrxhb1ZkZ84"
+Expires: Mon, 04 Mar 2024 19:49:54 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":8517338,"creator_id":368248,"project_id":31441,"sprint_id":null,"workspace_id":36487,"body":null,"category_name":"Inbox","closed_at":null,"comments_count":0,"last_comment_at":null,"number":3,"points":null,"priority":null,"search_key":"3 hello world second test","state":"open","status":"new","title":"Hello World second test","upvotes_count":0,"created_at":"2024-03-04T19:20:22.813Z","updated_at":"2024-03-04T19:20:22.813Z","epic_id":null,"closer_id":null,"was_archived_from_404":null,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json"  https://zube.io/api/cards/851755
+HTTP/1.1 404 Not Found
+Server: nginx
+Date: Mon, 04 Mar 2024 19:50:30 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 21
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"15-5KajTCx0AJD0xogoSeOjjV2M8K0"
+
+{"error":"Not Found"}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json"  https://zube.io/api/cards/851733
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer kjhsjhfj" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json"  https://zube.io/api/cards/851733
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:51:03 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+{"error":"Unauthorized","message":"Invalid JWT."}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer kjhsjhfj" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: applicationmaponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/cards/8517338
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:55:11 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 774
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"306-6pUTJfgguvhU77pEsq/UFugCWCI"
+Expires: Mon, 04 Mar 2024 19:55:11 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":8517338,"creator_id":368248,"project_id":31441,"sprint_id":null,"workspace_id":36487,"body":null,"category_name":"Inbox","closed_at":null,"comments_count":1,"last_comment_at":"2024-03-04T19:52:51.760Z","number":3,"points":null,"priority":null,"search_key":"3 hello world second test","state":"open","status":"new","title":"Hello World second test","upvotes_count":0,"created_at":"2024-03-04T19:20:22.813Z","updated_at":"2024-03-04T19:20:22.813Z","epic_id":null,"closer_id":null,"was_archived_from_404":null,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" https://zube.io/api/cards/8517338/comments
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 19:55:35 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 532
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"214-zYlnZ0lXAfzjbpVLmTVipux5Tlw"
+Expires: Mon, 04 Mar 2024 19:55:35 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"pagination":{"page":1,"per_page":30,"total_pages":1,"total":1},"data":[{"id":11919543,"card_id":8517338,"creator_id":368248,"body":"test comment second","created_at":"2024-03-04T19:52:51.760Z","updated_at":"2024-03-04T19:52:51.760Z","creator":{"id":368248,"avatar_path":"/avatars/f5e6390f089d753a4c5a8fa4d010bb12.jpg","name":null,"username":"maponcee","created_at":"2024-03-04T13:11:38.612Z","updated_at":"2024-03-04T13:11:38.612Z","github_user_id":147769757,"is_user":true,"name_is_locked":false,"avatar_path_is_locked":false}}]}maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "Xmaponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7f" -H "Accept: application/json" -d '[{"body":"test comment second updated for test"}]' -X PUT https://zube.io/api/cards/8517338/comments/11919543
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:58:11 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+{"error":"Unauthorized","message":"Invalid JWT."}maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7f" -H "Accept: application/json" -X DELETE https://zube.io/api/cards/8517338/comments/11919543
+HTTP/1.1 401 Unauthorized
+Server: nginx
+Date: Mon, 04 Mar 2024 19:59:17 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"31-aJSnztUQqLxO9PASMAxUsl5ApYg"
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" -d '[{"body":"test comment second updated for test"}]' -X PUT https://zube.io/api/cards/8517338/comments/11919543
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Mon, 04 Mar 2024 20:00:46 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 23
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"17-i22p4FL6eG9sZYzIFCm/xvy/pHM"
+
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json" -X DELETE  https://zube.io/api/cards/8517338/comments/11919543
+HTTP/1.1 204 No Content
+Server: nginx
+Date: Mon, 04 Mar 2024 20:01:53 GMT
+Connection: keep-alive
+X-Powered-By: Express
+ETag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
+Expires: Mon, 04 Mar 2024 20:01:53 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -H "Accept: application/json"  https://zube.io/api/cards/8517338/comments/11919543
+HTTP/1.1 302 Found
+Server: nginx
+Date: Mon, 04 Mar 2024 20:02:12 GMT
+Content-Length: 0
+Connection: keep-alive
+X-Powered-By: Express
+Location: /?redirect_back=%2Fapi%2Fcards%2F8517338%2Fcomments%2F11919543
+Vary: Accept
+Expires: Mon, 04 Mar 2024 20:02:12 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+maponce@maponce:~/Downloads/api$ 
+maponce@maponce:~/Downloads/api$ curl -i -H "Authorization: Bearer $token" -H "X-Client-ID: 69c878fc-da29-11ee-b1c7-eb1a7fcb4bd2" -X PUT https://zube.io/api/cards/8517307/archive
+HTTP/1.1 200 OK
+Server: nginx
+Date: Mon, 04 Mar 2024 20:19:39 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 779
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+ETag: W/"30b-xkQKJg/yLz68qjqhA+h02qxOm/U"
+Expires: Mon, 04 Mar 2024 20:19:39 GMT
+Cache-Control: max-age=0
+Cache-Control: no-cache
+
+{"id":8517307,"creator_id":368248,"project_id":31441,"sprint_id":null,"workspace_id":36487,"body":null,"category_name":"Archive","closed_at":"2024-03-04T20:19:39.914Z","comments_count":1,"last_comment_at":"2024-03-04T19:52:40.229Z","number":1,"points":null,"priority":null,"search_key":"1 hello world","state":"closed","status":"done","title":"Hello World","upvotes_count":0,"created_at":"2024-03-04T18:47:03.742Z","updated_at":"2024-03-04T20:19:39.914Z","epic_id":null,"closer_id":368248,"was_archived_from_404":null,"assignees":[],"card_custom_field_dates":[],"card_custom_field_numbers":[],"card_custom_field_texts":[],"card_custom_field_single_selections":[],"creator":{"id":368248,"username":"maponcee","name":null},"epic":null,"labels":[],"sprint":null,"github_issue":null}maponce@maponce:~/Downloads/api$ 
+
