@@ -1,9 +1,11 @@
-import json
 import logging
+from typing import Type
 
 from config.config import URL_CLICKUP, CLICKUP_TOKEN
 from helpers.rest_client import RestClient
+from helpers.validate_response import ValidateResponse
 from utils.logger import get_logger
+from utils.request_utils import RequestUtils
 
 LOGGER = get_logger(__name__, logging.DEBUG)
 
@@ -15,6 +17,8 @@ class TestTeamSpace:
         LOGGER.debug("Setup Class method")
         cls.list_space = []
         cls.rest_client = RestClient()
+        cls.request_body = RequestUtils()
+        cls.validate = ValidateResponse()
         team_id = cls.__get_team_id(cls)
         cls.url_team_space = f"{URL_CLICKUP}/team/{team_id}/space"
         cls.url_space = f"{URL_CLICKUP}/space"
@@ -27,134 +31,76 @@ class TestTeamSpace:
         for id_space in self.list_space:
             url_delete_space = f"{self.url_space}/{id_space}"
             response = self.rest_client.request("delete", url=url_delete_space)
-            if response.status_code == 200:
+            if response["status_code"] == 200:
                 LOGGER.info("Space Id: %s deleted", id_space)
 
     def __get_team_id(self):
         rest_client = self.rest_client
         response = rest_client.request("get", URL_CLICKUP+"/team")
-        team_id = response.json()["teams"][0]["id"]
+        team_id = response["body"]["teams"][0]["id"]
         LOGGER.debug("Team ID: %s", team_id)
         return team_id
 
-    def test_create_space(self):
+    def test_create_space(self, test_log_name):
         """
         Test create space
+        :param test_log_name:
         """
-        body_space = {
-                "name": "MP-API courseSpace01",
-                "multiple_assignees": True,
-                "features": {
-                    "due_dates": {
-                        "enabled": True,
-                        "start_date": False,
-                        "remap_due_dates": True,
-                        "remap_closed_due_date": False
-                    },
-                    "time_tracking": {
-                        "enabled": False
-                    },
-                    "tags": {
-                        "enabled": True
-                    },
-                    "time_estimates": {
-                        "enabled": True
-                    },
-                    "checklists": {
-                        "enabled": True
-                    },
-                    "custom_fields": {
-                        "enabled": True
-                    },
-                    "remap_dependencies": {
-                        "enabled": True
-                    },
-                    "dependency_warning": {
-                        "enabled": True
-                    },
-                    "portfolios": {
-                        "enabled": True
-                    }
-                }
-            }
-        body = json.dumps(body_space)
+        body_space = self.request_body.space_body("post_request")
         headers_post = {
             "Authorization": f"{CLICKUP_TOKEN}",
             "Content-Type": "application/json"
         }
         rest_client = RestClient(headers=headers_post)
-        response = rest_client.request("post", url=self.url_team_space, body=body)
-        self.id_space_created = response.json()["id"]
+        response = rest_client.request("post", url=self.url_team_space, body=body_space)
+        self.id_space_created = response["body"]["id"]
         self.list_space.append(self.id_space_created)
-        assert response.status_code == 200, "wrong status code, expected 200"
+        self.validate.validate_response(response, "create_space")
 
-    def test_get_all_spaces(self):
+    def test_get_all_spaces(self, test_log_name):
+        """
+        Test case to get all spaces created
+        :param test_log_name:
+        """
         rest_client = self.rest_client
         url_get_space = f"{self.url_team_space}?archived=false"
         response = rest_client.request("get", url=url_get_space)
-        assert response.status_code == 200, "wrong status code, expected 200"
+        self.validate.validate_response(response, "get_all_spaces")
 
     def test_get_a_space(self, create_space, test_log_name):
+        """
+        Test to get a created space
+        :param create_space:  str     ID of created space
+        :param test_log_name:
+        """
         rest_client = self.rest_client
         url_get_space = f"{self.url_space}/{create_space}"
         response = rest_client.request("get", url=url_get_space)
-        assert response.status_code == 200, "wrong status code, expected 200"
+        self.validate.validate_response(response, "get_a_space")
 
     def test_update_a_space(self, create_space, test_log_name):
-
-        name_space_to_update = "MP-API courseSpace01 - Updated"
-        body_space_updated = {
-            "name": name_space_to_update,
-            "multiple_assignees": True,
-            "features": {
-                "due_dates": {
-                    "enabled": True,
-                    "start_date": False,
-                    "remap_due_dates": True,
-                    "remap_closed_due_date": False
-                },
-                "time_tracking": {
-                    "enabled": False
-                },
-                "tags": {
-                    "enabled": True
-                },
-                "time_estimates": {
-                    "enabled": True
-                },
-                "checklists": {
-                    "enabled": True
-                },
-                "custom_fields": {
-                    "enabled": True
-                },
-                "remap_dependencies": {
-                    "enabled": True
-                },
-                "dependency_warning": {
-                    "enabled": True
-                },
-                "portfolios": {
-                    "enabled": True
-                }
-            }
-        }
-        body = json.dumps(body_space_updated)
+        """
+        Test cases to validate that it is possible to update the space information.
+        :param create_space:  Str    The UD os the space created
+        :param test_log_name:
+        """
+        body_space_updated = self.request_body.space_body("Updated")
         url_put = {
             "Authorization": f"{CLICKUP_TOKEN}",
             "Content-Type": "application/json"
         }
         rest_client = RestClient(headers=url_put)
         url_get_space = f"{self.url_space}/{create_space}"
-        response = rest_client.request("put", url=url_get_space, body=body)
-        space_name_updated = response.json()["name"]
-        assert space_name_updated == name_space_to_update, (f"Name is not updated expected name {name_space_to_update}"
-                                                            f"current {space_name_updated}")
-        assert response.status_code == 200, "wrong status code, expected 200"
+        response = rest_client.request("put", url=url_get_space, body=body_space_updated)
+        self.validate.validate_response(response, "update_a_space")
 
     def test_delete_space(self, create_space, test_log_name):
+        """
+        Test to delete a created space
+        :param create_space:  Str    The UD os the space created
+        :param test_log_name:
+        """
         rest_client = self.rest_client
         url_get_space = f"{self.url_space}/{create_space}"
         response = rest_client.request("delete", url=url_get_space)
-        assert response.status_code == 200, "wrong status code, expected 200"
-
+        self.validate.validate_response(response, "delete_a_space")

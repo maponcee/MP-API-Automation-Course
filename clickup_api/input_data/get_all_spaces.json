@@ -1,0 +1,97 @@
+{
+  "request": {},
+  "response": {
+    "body": {
+    "spaces": [
+        {
+            "id": "90130686983",
+            "name": "MP-API courseSpace01",
+            "color": null,
+            "private": false,
+            "avatar": null,
+            "admin_can_manage": null,
+            "statuses": [
+                {
+                    "id": "p90130686983_tSrfRR4f",
+                    "status": "to do",
+                    "type": "open",
+                    "orderindex": 0,
+                    "color": "#87909e"
+                },
+                {
+                    "id": "p90130686983_jo25qDcY",
+                    "status": "complete",
+                    "type": "closed",
+                    "orderindex": 1,
+                    "color": "#008844"
+                }
+            ],
+            "multiple_assignees": true,
+            "features": {
+                "due_dates": {
+                    "enabled": true,
+                    "start_date": true,
+                    "remap_due_dates": true,
+                    "remap_closed_due_date": false
+                },
+                "sprints": {
+                    "enabled": false
+                },
+                "points": {
+                    "enabled": false
+                },
+                "custom_items": {
+                    "enabled": false
+                },
+                "tags": {
+                    "enabled": true
+                },
+                "time_estimates": {
+                    "enabled": true,
+                    "rollup": true,
+                    "per_assignee": false
+                },
+                "checklists": {
+                    "enabled": true
+                },
+                "zoom": {
+                    "enabled": false
+                },
+                "milestones": {
+                    "enabled": false
+                },
+                "custom_fields": {
+                    "enabled": true
+                },
+                "remap_dependencies": {
+                    "enabled": true
+                },
+                "dependency_warning": {
+                    "enabled": true
+                },
+                "status_pies": {
+                    "enabled": false
+                },
+                "multiple_assignees": {
+                    "enabled": true
+                },
+                "portfolios": {
+                    "enabled": true
+                },
+                "emails": {
+                    "enabled": true
+                },
+                "time_tracking": {
+                    "default_to_billable": 2
+                }
+            },
+            "archived": false
+        }
+    ]
+    }
+  },
+  "headers": {
+      "Content-type": "application/json; charset=utf-8"
+  },
+  "status_code": 200
+}

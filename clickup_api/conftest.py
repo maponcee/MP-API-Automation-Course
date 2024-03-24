@@ -17,7 +17,7 @@ def create_space(request, get_team_id):
     environment = request.config.getoption("--env")
     LOGGER.critical("Environment selected: %s", environment)
     body_space = {
-        "name": "MP-API courseSpace - 01",
+        "name": "MP-API courseSpace - 04",
         "multiple_assignees": True,
         "features": {
             "due_dates": {
@@ -59,7 +59,7 @@ def create_space(request, get_team_id):
     }
     rest_client = RestClient(headers=headers_post)
     response = rest_client.request("post", URL_CLICKUP+"/team/"+get_team_id+"/space", body=body)
-    id_space = response.json()["id"]
+    id_space = response["body"]["id"]
     yield id_space
     delete_space(id_space, rest_client)
 
@@ -69,7 +69,7 @@ def get_team_id():
 
     rest_client = RestClient()
     response = rest_client.request("get", URL_CLICKUP+"/team")
-    team_id = response.json()["teams"][0]["id"]
+    team_id = response["body"]["teams"][0]["id"]
     LOGGER.debug("Team ID: %s", team_id)
     return team_id
 
@@ -78,7 +78,7 @@ def delete_space(id_space, rest_client):
     LOGGER.info("Cleanup space...")
     url_delete_project = f"{URL_CLICKUP}/space/{id_space}"
     response = rest_client.request("delete", url=url_delete_project)
-    if response.status_code == 200:
+    if response["status_code"] == 200:
         LOGGER.info("Project Id: %s deleted", id_space)
 
 
