@@ -2,6 +2,7 @@ import json
 import random
 import string
 
+
 class RequestUtils:
 
     @staticmethod
@@ -60,3 +61,27 @@ class RequestUtils:
         }
         return json.dumps(body_space)
 
+    @staticmethod
+    def build_post_headers(token):
+        """
+        Method to build headers of post request
+        :param token:     Str   Token
+        :return:
+        """
+        headers = {
+            "Authorization": f"{token}",
+            "Content-Type": "application/json"
+        }
+        return headers
+
+    def build_folder_body(self, name):
+        """
+        Method to build the body for space request.
+        :namer:   Str     Name of space
+        :return:          Body for space request in JSON.
+        """
+        name_complement = self.get_random_string(4)
+        body_folder = {
+            "name": f"folder-{name}-{name_complement}"
+        }
+        return json.dumps(body_folder)

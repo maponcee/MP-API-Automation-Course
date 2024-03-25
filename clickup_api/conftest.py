@@ -65,6 +65,25 @@ def create_space(request, get_team_id):
 
 
 @pytest.fixture()
+def create_folder(create_space):
+
+    LOGGER.debug("Create folder fixture")
+    body_folder = {
+        "name": "folder-name"
+    }
+    body = json.dumps(body_folder)
+    headers_post = {
+        "Authorization": f"{CLICKUP_TOKEN}",
+        "Content-Type": "application/json"
+    }
+    url_folder = f"{URL_CLICKUP}/space/{create_space}/folder"
+    rest_client = RestClient(headers=headers_post)
+    response = rest_client.request("post", url_folder, body=body)
+    id_folder_created = response["body"]["id"]
+    yield id_folder_created
+
+
+@pytest.fixture()
 def get_team_id():
 
     rest_client = RestClient()

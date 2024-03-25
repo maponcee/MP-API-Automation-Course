@@ -1,0 +1,26 @@
+{
+  "request": {},
+  "response": {
+    "body": {
+      "folders": [
+        {
+          "id": "457",
+          "name": "New Folder Name",
+          "orderindex": 0,
+          "override_statuses": false,
+          "hidden": false,
+          "space": {
+            "id": "789",
+            "name": "Space Name",
+            "access": true
+          },
+          "task_count": "0"
+        }
+      ]
+    }
+  },
+  "headers": {
+    "Content-type": "application/json; charset=utf-8"
+  },
+  "status_code": 200
+}
