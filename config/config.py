@@ -12,3 +12,5 @@ abs_path = os.path.abspath(__file__ + "../../../")
 CLICKUP_ID = os.getenv("CLICKUPID")
 CLICKUP_SECRET = os.getenv("CSECRET")
 CODE_APP = os.getenv("CODE")
+
+MAX_SPACES = 5

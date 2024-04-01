@@ -16,7 +16,7 @@ class RequestUtils:
         result_str = ''.join(random.choice(letters) for i in range(length))
         return result_str
 
-    def space_body(self, name, multi_assign=True):
+    def build_space_body(self, name, multi_assign=True):
         """
         Method to build the body for space request.
         :namer:   Str     Name of space

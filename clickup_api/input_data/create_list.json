@@ -1,0 +1,59 @@
+{
+  "request": {},
+  "response": {
+    "body": {
+    "id": "901302790055",
+    "name": "API List -qny",
+    "deleted": false,
+    "orderindex": 0,
+    "content": "New List Content",
+    "status": {
+        "status": "red",
+        "color": "#d33d44",
+        "hide_label": true
+    },
+    "priority": {
+        "priority": "urgent",
+        "color": "#f50000"
+    },
+    "assignee": null,
+    "due_date": null,
+    "start_date": null,
+    "folder": {
+        "id": "90131484211",
+        "name": "folder-name-zew",
+        "hidden": false,
+        "access": true
+    },
+    "space": {
+        "id": "90130757106",
+        "name": "Space-conf_test-wukm",
+        "access": true
+    },
+    "inbound_address": "a.t.901302790055.u-84609248.66a814e6-3ed6-4719-ab2b-f2bfcfc20a0d@tasks.clickup.com",
+    "archived": false,
+    "override_statuses": false,
+    "statuses": [
+        {
+            "id": "p90130757106_3SE8tCng",
+            "status": "to do",
+            "orderindex": 0,
+            "color": "#87909e",
+            "type": "open"
+        },
+        {
+            "id": "p90130757106_bRGbzn1j",
+            "status": "complete",
+            "orderindex": 1,
+            "color": "#008844",
+            "type": "closed"
+        }
+    ],
+    "permission_level": "create"
+    }
+  },
+  "headers": {
+    "Content-type": "application/json; charset=utf-8"
+  },
+  "status_code": 200
+}

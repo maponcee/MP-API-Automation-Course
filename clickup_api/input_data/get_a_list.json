@@ -1,0 +1,59 @@
+{
+    "request": {},
+    "response": {
+        "body": {
+            "id": "901302790898",
+            "name": "API List -tcq",
+            "deleted": false,
+            "orderindex": 0,
+            "content": "New List Content",
+            "status": {
+                "status": "red",
+                "color": "#d33d44",
+                "hide_label": true
+            },
+            "priority": {
+                "priority": "urgent",
+                "color": "#f50000"
+            },
+            "assignee": null,
+            "due_date": null,
+            "start_date": null,
+            "folder": {
+                "id": "90131484692",
+                "name": "hidden",
+                "hidden": true,
+                "access": true
+            },
+            "space": {
+                "id": "90130757522",
+                "name": "Space-conf_test-svwm",
+                "access": true
+            },
+            "inbound_address": "a.t.901302790898.u-84609248.f85adc59-e898-4bc7-affb-6b78c4fbe806@tasks.clickup.com",
+            "archived": false,
+            "override_statuses": false,
+            "statuses": [
+                {
+                    "id": "p90130757522_ZIVgaeW2",
+                    "status": "to do",
+                    "orderindex": 0,
+                    "color": "#87909e",
+                    "type": "open"
+                },
+                {
+                    "id": "p90130757522_fsygR4YQ",
+                    "status": "complete",
+                    "orderindex": 1,
+                    "color": "#008844",
+                    "type": "closed"
+                }
+            ],
+            "permission_level": "create"
+        }
+    },
+    "headers": {
+        "Content-type": "application/json; charset=utf-8"
+    },
+    "status_code": 200
+}

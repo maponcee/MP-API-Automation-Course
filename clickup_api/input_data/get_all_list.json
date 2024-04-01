@@ -1,0 +1,46 @@
+{
+  "request": {},
+  "response": {
+    "body": {
+      "lists": [
+        {
+          "id": "901302790499",
+          "name": "API List -okz",
+          "orderindex": 0,
+          "content": "New List Content",
+          "status": {
+            "status": "red",
+            "color": "#d33d44",
+            "hide_label": true
+          },
+          "priority": {
+            "priority": "urgent",
+            "color": "#f50000"
+          },
+          "assignee": null,
+          "task_count": 0,
+          "due_date": null,
+          "start_date": null,
+          "folder": {
+            "id": "90131484448",
+            "name": "folder-name-txs",
+            "hidden": false,
+            "access": true
+          },
+          "space": {
+            "id": "90130757283",
+            "name": "Space-conf_test-vrom",
+            "access": true
+          },
+          "archived": false,
+          "override_statuses": false,
+          "permission_level": "create"
+        }
+      ]
+    }
+  },
+  "headers": {
+    "Content-type": "application/json; charset=utf-8"
+  },
+  "status_code": 200
+}
