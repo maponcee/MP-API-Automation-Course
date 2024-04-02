@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+folder.py
+    Entity class for folder feature.
+"""
 import json
 import logging
 
@@ -10,6 +16,9 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class Folder:
+    """
+    Entity class for folders
+    """
 
     def __init__(self, rest_client=None):
         self.url_folders = f"{URL_CLICKUP}/folder"
@@ -44,4 +53,3 @@ class Folder:
         response = self.rest_client.request("delete", url=url_delete_folder)
         if response["status_code"] == 200:
             LOGGER.info("Folder Id: %s deleted", folder_id)
-

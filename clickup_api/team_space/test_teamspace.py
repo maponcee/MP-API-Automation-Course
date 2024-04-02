@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+test_teamspace.py
+    File  to test the space feature
+"""
 import logging
 
 import allure
@@ -16,6 +22,9 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 @allure.epic("API task")
 @allure.story("Team Space")
 class TestTeamSpace:
+    """
+    Class to test the space feature.
+    """
 
     @classmethod
     def setup_class(cls):
@@ -51,8 +60,8 @@ class TestTeamSpace:
         space = Space()
         url_get_space = f"{URL_CLICKUP}/team/{get_team_id}/space?archived=false"
         response, _ = space.create_space(url_space=url_get_space, name_space="create_test")
-        self.id_space_created = response["body"]["id"]
-        self.list_space.append(self.id_space_created)
+        id_space_created = response["body"]["id"]
+        self.list_space.append(id_space_created)
         self.validate.validate_response(response, "create_space")
 
     @allure.title("Test get all spaces from a team")
@@ -126,10 +135,10 @@ class TestTeamSpace:
         num_spaces = len(spaces["body"]["spaces"])
         LOGGER.debug("Number of current Spaces: %s", num_spaces)
         space = Space()
-        for index in range(num_spaces, MAX_SPACES):
+        for _ in range(num_spaces, MAX_SPACES):
             response, _ = space.create_space(url_space=url_get_space, name_space="max_num_spaces")
-            self.id_space_created = response["body"]["id"]
-            self.list_space.append(self.id_space_created)
+            id_space_created = response["body"]["id"]
+            self.list_space.append(id_space_created)
 
         response, _ = space.create_space(url_space=url_get_space, name_space="max_num_spaces")
         assert response["status_code"] == 403

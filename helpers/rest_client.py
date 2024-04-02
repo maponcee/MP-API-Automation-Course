@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+rest_client.py
+    File to create the rest client request.
+"""
 import json
 import logging
 
@@ -10,6 +16,9 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class RestClient:
+    """
+    Class to define the rest client methods
+    """
 
     def __init__(self, headers=HEADERS_TODO):
         self.session = requests.Session()
@@ -49,6 +58,12 @@ class RestClient:
 
     @staticmethod
     def select_method(method_name, session):
+        """
+        Method to select the type of request to execute
+        :param method_name:
+        :param session:
+        :return:
+        """
         methods = {
             "get": session.get,
             "post": session.post,

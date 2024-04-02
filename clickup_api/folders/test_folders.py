@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+test_folder.py
+    File to test the Folder feature
+"""
 import logging
 
 import allure

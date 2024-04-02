@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+test_list.py
+    Class to test the list feature
+"""
 import logging
 
 import allure

@@ -1,9 +1,14 @@
-import json
+"""
+(c) Copyright Jalasoft. 2024
+
+conftest.py
+    File created for pytest fixtures
+"""
 import logging
 
 import pytest
 
-from config.config import URL_CLICKUP, CLICKUP_TOKEN
+from config.config import URL_CLICKUP
 from entities.folder import Folder
 from entities.list import List
 from entities.space import Space
@@ -14,17 +19,16 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 @pytest.fixture()
-def create_space(request, get_team_id):
+def create_space(get_team_id):
     """
     Confid method to create a Space.
-    :param request:
     :param get_team_id:
     :return:
     """
     LOGGER.debug("Create Space fixture")
     space = Space()
     url_space = f"{URL_CLICKUP}/team/{get_team_id}/space"
-    created_space, rest_client = space.create_space(url_space, name_space="conf_test")
+    created_space, _ = space.create_space(url_space, name_space="conf_test")
     id_space = created_space["body"]["id"]
     yield id_space
     delete_space(id_space, space)
@@ -76,7 +80,10 @@ def create_list_of_space(create_space):
 
 @pytest.fixture()
 def get_team_id():
-
+    """
+    Method to get the ID of the team
+    :return:
+    """
     rest_client = RestClient()
     response = rest_client.request("get", URL_CLICKUP+"/team")
     team_id = response["body"]["teams"][0]["id"]
@@ -113,15 +120,27 @@ def delete_list(id_list, obj_list):
 
 @pytest.fixture()
 def test_log_name(request):
+    """
+    Method for logs
+    :param request:
+    :return:
+    """
     LOGGER.info("Test '%s' STARTED", request.node.name)
 
     def fin():
+        """
+        method to en logs
+        """
         LOGGER.info("Test '%s' COMPLETED", request.node.name)
 
     request.addfinalizer(fin)
 
 
 def pytest_addoption(parser):
+    """
+    Method to parse the environment
+    :param parser:
+    """
     parser.addoption(
         '--env', action='store', default='dev', help="Environment where the tests are executed"
     )

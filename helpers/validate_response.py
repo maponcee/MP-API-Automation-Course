@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+validate_response.py
+    Validate class for validate the response of the request
+"""
 import json
 import logging
 
@@ -8,8 +14,16 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class ValidateResponse:
+    """
+    Class to build the method to validate the responses of request.
+    """
 
     def validate_response(self, actual_response=None, endpoint=None):
+        """
+        Method to get the file to compare with the actual response
+        :param actual_response:
+        :param endpoint:
+        """
 
         expected_response = self.read_input_data_json(f"{abs_path}/clickup_api/input_data/{endpoint}.json")
 
@@ -20,11 +34,10 @@ class ValidateResponse:
 
     def validate_value(self, expected_value, actual_value, key_compare):
         """
-
+        Method to compare 2 values, according the key_compare
         :param expected_value:
         :param actual_value:
         :param key_compare:
-        :return:
         """
         LOGGER.info("Validating %s: ", key_compare)
         error_message = f"Expecting '{expected_value}' but received '{actual_value}'"
