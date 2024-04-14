@@ -5,3 +5,4 @@ requests==2.31.0
 python-dotenv==1.0.1
 # libs for fastapi
 uvicorn==0.28.0
+behave==1.2.6

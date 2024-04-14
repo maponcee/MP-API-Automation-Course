@@ -41,13 +41,13 @@ class TestFolders:
     @allure.title("Test create a folder")
     @allure.tag("acceptance", "folder")
     @pytest.mark.acceptance
-    def test_create_folder(self, create_space, test_log_name):
+    def test_create_folder(self, _create_space, _test_log_name):
         """
         Test to create a folder in a space
         :param create_space:   Str    ID of created space
         :param test_log_name:
         """
-        url_folder = f"{self.url_space}{create_space}/folder"
+        url_folder = f"{self.url_space}{_create_space}/folder"
         headers_post = self.request_utils.build_post_headers(CLICKUP_TOKEN)
         body_folder = self.request_utils.build_folder_body("create")
         rest_client = RestClient(headers=headers_post)
@@ -59,12 +59,12 @@ class TestFolders:
     @allure.title("Test get all folders from a space")
     @allure.tag("acceptance", "folder")
     @pytest.mark.acceptance
-    def test_get_all_folders(self, create_space, test_log_name):
+    def test_get_all_folders(self, _create_space, _test_log_name):
         """
         Test case to get all folders created
         :param test_log_name:
         """
-        url_folder = f"{self.url_space}{create_space}/folder"
+        url_folder = f"{self.url_space}{_create_space}/folder"
         headers_post = self.request_utils.build_post_headers(CLICKUP_TOKEN)
         body_folder = self.request_utils.build_folder_body("create")
         rest_client = RestClient(headers=headers_post)
@@ -77,20 +77,20 @@ class TestFolders:
     @allure.title("Test get a folder")
     @allure.tag("acceptance", "folder")
     @pytest.mark.acceptance
-    def test_get_a_folder(self, create_folder, test_log_name):
+    def test_get_a_folder(self, _create_folder, _test_log_name):
         """
         Test to get a created folder
         :param create_folder:  str     ID of created folder
         :param test_log_name:
         """
-        url_get_folder = f"{self.url_folder}/{create_folder}"
+        url_get_folder = f"{self.url_folder}/{_create_folder}"
         response = self.rest_client.request("get", url=url_get_folder)
         self.validate.validate_response(response, "create_folder")
 
     @allure.title("Test update a folder")
     @allure.tag("acceptance", "folder")
     @pytest.mark.acceptance
-    def test_update_a_folder(self, create_folder, test_log_name):
+    def test_update_a_folder(self, _create_folder, _test_log_name):
         """
         Test cases to validate that it is possible to update the folder information.
         :param create_folder:  Str    The ID of the created folder
@@ -99,20 +99,20 @@ class TestFolders:
         body_folder_updated = self.request_utils.build_space_body("Updated")
         url_put = self.request_utils.build_post_headers(CLICKUP_TOKEN)
         rest_client = RestClient(headers=url_put)
-        url_get_folder = f"{self.url_folder}/{create_folder}"
+        url_get_folder = f"{self.url_folder}/{_create_folder}"
         response = rest_client.request("put", url=url_get_folder, body=body_folder_updated)
         self.validate.validate_response(response, "create_folder")
 
     @allure.title("Test delete a folder")
     @allure.tag("acceptance", "folder")
     @pytest.mark.acceptance
-    def test_delete_folder(self, create_folder, test_log_name):
+    def test_delete_folder(self, _create_folder, _test_log_name):
         """
         Test to delete a created folder
         :param create_folder:  Str    The UD os the folder created
         :param test_log_name:
         """
         rest_client = self.rest_client
-        url_get_folder = f"{self.url_folder}/{create_folder}"
+        url_get_folder = f"{self.url_folder}/{_create_folder}"
         response = rest_client.request("delete", url=url_get_folder)
         self.validate.validate_response(response, "delete_a_folder")

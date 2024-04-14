@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+list.py
+    Entity class for list feature.
+"""
 import json
 import logging
 
@@ -10,6 +16,9 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class List:
+    """
+    Entities class for List features.
+    """
 
     def __init__(self, rest_client=None):
         self.url_list = f"{URL_CLICKUP}/list"
@@ -76,4 +85,3 @@ class List:
         rest_client = RestClient(headers=headers_post)
         response = rest_client.request("put", url=url_list, body=body)
         return response, self.rest_client
-

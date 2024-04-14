@@ -1,3 +1,9 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+space.py
+    Entity class for space feature.
+"""
 import logging
 
 from config.config import URL_CLICKUP, CLICKUP_TOKEN
@@ -9,6 +15,9 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 class Space:
+    """
+    Entities class for Spaces feature.
+    """
 
     def __init__(self, rest_client=None):
         self.url_spaces = f"{URL_CLICKUP}/space"

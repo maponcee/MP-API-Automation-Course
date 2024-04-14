@@ -25,12 +25,16 @@ class ValidateResponse:
         :param endpoint:
         """
 
-        expected_response = self.read_input_data_json(f"{abs_path}/clickup_api/input_data/{endpoint}.json")
+        expected_response = self.read_input_data_json(
+            f"{abs_path}/clickup_api/input_data/{endpoint}.json")
 
         if "body" in actual_response:
-            self.validate_value(expected_response["status_code"], actual_response["status_code"], "status_code")
-            self.validate_value(expected_response["response"]["body"], actual_response["body"], "body")
-            self.validate_value(expected_response["headers"],  actual_response["headers"], "headers")
+            self.validate_value(expected_response["status_code"], actual_response["status_code"],
+                                "status_code")
+            self.validate_value(expected_response["response"]["body"], actual_response["body"],
+                                "body")
+            self.validate_value(expected_response["headers"],  actual_response["headers"],
+                                "headers")
 
     def validate_value(self, expected_value, actual_value, key_compare):
         """

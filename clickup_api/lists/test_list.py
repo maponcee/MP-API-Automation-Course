@@ -40,13 +40,13 @@ class TestLists:
     @allure.title("Test create a list for space")
     @allure.tag("acceptance", "lists")
     @pytest.mark.acceptance
-    def test_create_list_for_space(self, create_space, test_log_name):
+    def test_create_list_for_space(self, _create_space, _test_log_name):
         """
         Test to create a list in a space
         :param create_space:   Str    ID of created space
         :param test_log_name:
         """
-        response, _ = self.list.create_list(space_id=create_space)
+        response, _ = self.list.create_list(space_id=_create_space)
         id_list = response["body"]["id"]
         self.list_of_lists.append(id_list)
         self.validate.validate_response(response, "create_list")
@@ -54,13 +54,13 @@ class TestLists:
     @allure.title("Test create a list for folder")
     @allure.tag("acceptance", "lists")
     @pytest.mark.acceptance
-    def test_create_list_for_folder(self, create_folder, test_log_name):
+    def test_create_list_for_folder(self, _create_folder, _test_log_name):
         """
         Test create a list for a folder
         :param create_folder:    Str   ID of created folder
         :param test_log_name:
         """
-        response, _ = self.list.create_list(folder_id=create_folder)
+        response, _ = self.list.create_list(folder_id=_create_folder)
         id_list = response["body"]["id"]
         self.list_of_lists.append(id_list)
         self.validate.validate_response(response, "create_list")
@@ -132,14 +132,14 @@ class TestLists:
     @allure.title("Test the create using allowed priorities")
     @allure.tag("functional", "lists")
     @pytest.mark.functional
-    def test_allowed_priorities_for_list(self, create_space, test_log_name):
+    def test_allowed_priorities_for_list(self, _create_space, _test_log_name):
         """
         Test to verify it is possible to create a list with all allowed priorities
         :param create_space:      Str     ID of the team to create the spaces.
         :param test_log_name:
         """
         for index in range(1, 5):
-            response, _ = self.list.create_list(space_id=create_space, priority=index)
+            response, _ = self.list.create_list(space_id=_create_space, priority=index)
             id_list = response["body"]["id"]
             self.list_of_lists.append(id_list)
             self.validate.validate_response(response, "create_list")

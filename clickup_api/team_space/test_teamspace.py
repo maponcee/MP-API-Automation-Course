@@ -52,13 +52,13 @@ class TestTeamSpace:
     @allure.title("Test create a space")
     @allure.tag("acceptance", "space")
     @pytest.mark.acceptance
-    def test_create_space(self, get_team_id, test_log_name):
+    def test_create_space(self, _get_team_id, _test_log_name):
         """
         Test create space
         :param test_log_name:
         """
         space = Space()
-        url_get_space = f"{URL_CLICKUP}/team/{get_team_id}/space?archived=false"
+        url_get_space = f"{URL_CLICKUP}/team/{_get_team_id}/space?archived=false"
         response, _ = space.create_space(url_space=url_get_space, name_space="create_test")
         id_space_created = response["body"]["id"]
         self.list_space.append(id_space_created)
@@ -67,33 +67,33 @@ class TestTeamSpace:
     @allure.title("Test get all spaces from a team")
     @allure.tag("acceptance", "space")
     @pytest.mark.acceptance
-    def test_get_all_spaces(self, get_team_id, test_log_name):
+    def test_get_all_spaces(self, _get_team_id, _test_log_name):
         """
         Test case to get all spaces created
         :param test_log_name:
         """
-        url_get_space = f"{URL_CLICKUP}/team/{get_team_id}/space?archived=false"
+        url_get_space = f"{URL_CLICKUP}/team/{_get_team_id}/space?archived=false"
         response = self.rest_client.request("get", url=url_get_space)
         self.validate.validate_response(response, "get_all_spaces")
 
     @allure.title("Test get a space")
     @allure.tag("acceptance", "space")
     @pytest.mark.acceptance
-    def test_get_a_space(self, create_space, test_log_name):
+    def test_get_a_space(self, _create_space, _test_log_name):
         """
         Test to get a created space
         :param create_space:  str     ID of created space
         :param test_log_name:
         """
         rest_client = self.rest_client
-        url_get_space = f"{self.url_space}/{create_space}"
+        url_get_space = f"{self.url_space}/{_create_space}"
         response = rest_client.request("get", url=url_get_space)
         self.validate.validate_response(response, "get_a_space")
 
     @allure.title("Test update a space")
     @allure.tag("acceptance", "space")
     @pytest.mark.acceptance
-    def test_update_a_space(self, create_space, test_log_name):
+    def test_update_a_space(self, _create_space, _test_log_name):
         """
         Test cases to validate that it is possible to update the space information.
         :param create_space:  Str    The UD os the space created
@@ -102,35 +102,35 @@ class TestTeamSpace:
         body_space_updated = self.request_utils.build_space_body("Updated")
         url_put = self.request_utils.build_post_headers(CLICKUP_TOKEN)
         rest_client = RestClient(headers=url_put)
-        url_get_space = f"{self.url_space}/{create_space}"
+        url_get_space = f"{self.url_space}/{_create_space}"
         response = rest_client.request("put", url=url_get_space, body=body_space_updated)
         self.validate.validate_response(response, "update_a_space")
 
     @allure.title("Test delete a space")
     @allure.tag("acceptance", "space")
     @pytest.mark.acceptance
-    def test_delete_space(self, create_space, test_log_name):
+    def test_delete_space(self, _create_space, _test_log_name):
         """
         Test to delete a created space
         :param create_space:  Str    The UD os the space created
         :param test_log_name:
         """
         rest_client = self.rest_client
-        url_get_space = f"{self.url_space}/{create_space}"
+        url_get_space = f"{self.url_space}/{_create_space}"
         response = rest_client.request("delete", url=url_get_space)
         self.validate.validate_response(response, "delete_a_space")
 
     @allure.title("Test the maximum number of spaces that can be created")
     @allure.tag("functional", "space")
     @pytest.mark.functional
-    def test_max_number_of_space(self, get_team_id, test_log_name):
+    def test_max_number_of_space(self, _get_team_id, _test_log_name):
         """
         Test the max number of spaces allowed
         :param get_team_id:      Str     ID of the team to create the spaces.
         :param test_log_name:
         """
 
-        url_get_space = f"{URL_CLICKUP}/team/{get_team_id}/space?archived=false"
+        url_get_space = f"{URL_CLICKUP}/team/{_get_team_id}/space?archived=false"
         spaces = self.rest_client.request("get", url=url_get_space)
         num_spaces = len(spaces["body"]["spaces"])
         LOGGER.debug("Number of current Spaces: %s", num_spaces)

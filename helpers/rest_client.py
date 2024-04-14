@@ -20,7 +20,9 @@ class RestClient:
     Class to define the rest client methods
     """
 
-    def __init__(self, headers=HEADERS_TODO):
+    def __init__(self, headers=None):
+        if headers is None:
+            headers = HEADERS_TODO
         self.session = requests.Session()
 
         self.session.headers.update(headers)

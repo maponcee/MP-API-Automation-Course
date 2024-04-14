@@ -19,15 +19,16 @@ LOGGER = get_logger(__name__, logging.DEBUG)
 
 
 @pytest.fixture()
-def create_space(get_team_id):
+def _create_space(_get_team_id):
     """
     Confid method to create a Space.
-    :param get_team_id:
+    :param _get_team_id:
     :return:
     """
+    LOGGER.debug("Team id: %s", _get_team_id)
     LOGGER.debug("Create Space fixture")
     space = Space()
-    url_space = f"{URL_CLICKUP}/team/{get_team_id}/space"
+    url_space = f"{URL_CLICKUP}/team/{_get_team_id}/space"
     created_space, _ = space.create_space(url_space, name_space="conf_test")
     id_space = created_space["body"]["id"]
     yield id_space
@@ -35,51 +36,53 @@ def create_space(get_team_id):
 
 
 @pytest.fixture()
-def create_folder(create_space):
+def _create_folder(_create_space):
     """
     Method to create a folder.
-    :param create_space:  STR   ID of space created.
+    :param _create_space:  STR   ID of space created.
     :return:
     """
 
     LOGGER.debug("Create folder fixture")
     folder = Folder()
-    folder_created, _ = folder.create_folder(create_space)
+    folder_created, _ = folder.create_folder(_create_space)
     id_folder_created = folder_created["body"]["id"]
     yield id_folder_created
     delete_folder(id_folder_created, folder)
 
 
 @pytest.fixture()
-def create_list_of_folder(create_folder):
+def create_list_of_folder(_create_folder):
     """
     Method to create a List in a folder
-    :param create_folder:    Str   folder ID to create a list
+    :param _create_folder:    Str   folder ID to create a list
     :return:
     """
+    LOGGER.debug("Folder id: %s", _create_folder)
     obj_list = List()
-    list_created, _ = obj_list.create_list(folder_id=create_folder)
+    list_created, _ = obj_list.create_list(folder_id=_create_folder)
     id_list = list_created["body"]["id"]
-    yield id_list, create_folder
+    yield id_list, _create_folder
     delete_list(id_list, obj_list)
 
 
 @pytest.fixture()
-def create_list_of_space(create_space):
+def create_list_of_space(_create_space):
     """
     Method to create a List in a space
-    :param create_space:    Str   Space ID to create a list
+    :param _create_space:    Str   Space ID to create a list
     :return:
     """
+    LOGGER.debug("Space id: %s", _create_space)
     obj_list = List()
-    list_created, _ = obj_list.create_list(space_id=create_space)
+    list_created, _ = obj_list.create_list(space_id=_create_space)
     id_list = list_created["body"]["id"]
-    yield id_list, create_space
+    yield id_list, _create_space
     delete_list(id_list, obj_list)
 
 
 @pytest.fixture()
-def get_team_id():
+def _get_team_id():
     """
     Method to get the ID of the team
     :return:
@@ -119,7 +122,7 @@ def delete_list(id_list, obj_list):
 
 
 @pytest.fixture()
-def test_log_name(request):
+def _test_log_name(request):
     """
     Method for logs
     :param request:
