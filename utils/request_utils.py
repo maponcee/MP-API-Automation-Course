@@ -1,9 +1,18 @@
+"""
+(c) Copyright Jalasoft. 2024
+
+request_utils.py
+    File to have some utils for request.
+"""
 import json
 import random
 import string
 
 
 class RequestUtils:
+    """
+    File to have some utils for request.
+    """
 
     @staticmethod
     def get_random_string(length):
